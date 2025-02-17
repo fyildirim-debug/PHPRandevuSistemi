@@ -1,0 +1,1005 @@
+:root {
+    --primary: #3b82f6;
+    --primary-dark: #2563eb;
+    --secondary: #64748b;
+    --success: #10b981;
+    --danger: #ef4444;
+    --warning: #f59e0b;
+    --info: #06b6d4;
+    --dark: #0f172a;
+    --darker: #020617;
+    --gray: #94a3b8;
+    --light: #f1f5f9;
+    --white: #ffffff;
+    
+    --sidebar-width: 280px;
+    --header-height: 70px;
+    --border-radius: 16px;
+    --card-border-radius: 24px;
+}
+
+/* Genel Stiller */
+body {
+    font-family: 'Inter', sans-serif;
+    background: var(--darker);
+    color: var(--light);
+    min-height: 100vh;
+}
+
+/* Ana layout düzenlemeleri */
+html, body {
+    height: 100%;
+    margin: 0;
+}
+
+#layoutSidenav {
+    display: flex;
+    min-height: 100vh;
+}
+
+#layoutSidenav_nav {
+    position: fixed;
+    height: 100vh;
+    width: var(--sidebar-width);
+    background: rgba(15, 23, 42, 0.7);
+    backdrop-filter: blur(20px);
+    border-right: 1px solid rgba(255, 255, 255, 0.05);
+    z-index: 1030;
+}
+
+#layoutSidenav_content {
+    display: flex;
+    flex-direction: column;
+    margin-left: var(--sidebar-width);
+    padding-top: var(--header-height);
+    min-height: 100vh;
+    width: 100%;
+}
+
+/* İçerik alanı */
+main {
+    flex: 1 0 auto;
+    padding: 2rem;
+    padding-bottom: calc(60px + 2rem); /* Footer yüksekliği + padding */
+}
+
+/* Sidebar Stili */
+.sb-sidenav {
+    height: 100%;
+    padding: 2rem 1rem;
+}
+
+.sb-sidenav-menu {
+    padding: 0 0.5rem;
+}
+
+.sb-sidenav-menu .nav-link {
+    color: var(--gray);
+    padding: 1rem 1.5rem;
+    border-radius: var(--border-radius);
+    margin-bottom: 0.5rem;
+    font-weight: 500;
+    transition: all 0.3s ease;
+    display: flex;
+    align-items: center;
+}
+
+.sb-sidenav-menu .nav-link:hover {
+    color: var(--white);
+    background: rgba(255, 255, 255, 0.03);
+    transform: translateX(5px);
+}
+
+.sb-sidenav-menu .nav-link.active {
+    color: var(--white);
+    background: var(--primary);
+    box-shadow: 0 8px 24px -4px rgba(59, 130, 246, 0.4);
+}
+
+.sb-sidenav-menu .nav-link i {
+    width: 24px;
+    height: 24px;
+    font-size: 1.25rem;
+    margin-right: 1rem;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    opacity: 0.8;
+}
+
+.sb-sidenav-menu-heading {
+    color: var(--secondary);
+    font-size: 0.75rem;
+    font-weight: 600;
+    text-transform: uppercase;
+    letter-spacing: 1.5px;
+    padding: 1.5rem 1.25rem 0.75rem;
+}
+
+/* Topbar Stili */
+.sb-topnav {
+    position: fixed;
+    top: 0;
+    right: 0;
+    width: calc(100% - var(--sidebar-width));
+    height: var(--header-height);
+    background: rgba(15, 23, 42, 0.95);
+    backdrop-filter: blur(10px);
+    border-bottom: 1px solid rgba(255, 255, 255, 0.1);
+    padding: 0 2rem;
+    z-index: 1040;
+}
+
+.navbar-brand {
+    font-weight: 600;
+    letter-spacing: 0.5px;
+}
+
+.sb-topnav .nav-link {
+    color: var(--gray) !important;
+    padding: 0.5rem 1rem;
+    border-radius: var(--border-radius);
+    transition: all 0.3s ease;
+}
+
+.sb-topnav .nav-link:hover {
+    color: var(--white) !important;
+    background: rgba(255, 255, 255, 0.03);
+}
+
+/* Footer düzenlemesi */
+.footer-fix {
+    position: fixed;
+    bottom: 0;
+    right: 0;
+    width: calc(100% - var(--sidebar-width));
+    height: 60px;
+    background: rgba(15, 23, 42, 0.95);
+    backdrop-filter: blur(10px);
+    border-top: 1px solid rgba(255, 255, 255, 0.05);
+    z-index: 1040;
+}
+
+/* Container düzenlemesi */
+.container-fluid {
+    padding: 2rem;
+    max-width: 1920px;
+    margin: 0 auto;
+}
+
+/* Kartlar */
+.card {
+    background: rgba(15, 23, 42, 0.7);
+    backdrop-filter: blur(20px);
+    border: 1px solid rgba(255, 255, 255, 0.05);
+    border-radius: var(--card-border-radius);
+    margin-bottom: 1.5rem;
+    overflow: hidden;
+}
+
+.card-header {
+    background: transparent;
+    padding: 1.75rem;
+    border-bottom: 1px solid rgba(255, 255, 255, 0.05);
+    font-weight: 600;
+    color: var(--white);
+}
+
+/* Row ve Col düzenlemeleri */
+.row {
+    --bs-gutter-x: 1.5rem;
+    --bs-gutter-y: 1.5rem;
+    display: flex;
+    flex-wrap: wrap;
+}
+
+.row > * {
+    margin-bottom: var(--bs-gutter-y);
+}
+
+/* Dashboard Kartları */
+.dashboard-card {
+    height: 100%;
+    min-height: 200px; /* Minimum yükseklik */
+    max-height: 250px; /* Maksimum yükseklik */
+    display: flex;
+    flex-direction: column;
+    background: rgba(15, 23, 42, 0.7);
+    backdrop-filter: blur(20px);
+    border: 1px solid rgba(255, 255, 255, 0.05);
+    border-radius: var(--card-border-radius);
+    padding: 2rem;
+    transition: all 0.4s cubic-bezier(0.4, 0, 0.2, 1);
+    position: relative;
+    overflow: hidden;
+}
+
+.dashboard-card::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background: linear-gradient(45deg, transparent, rgba(255, 255, 255, 0.03));
+    pointer-events: none;
+}
+
+.dashboard-card:hover {
+    transform: translateY(-5px) scale(1.02);
+    box-shadow: 0 20px 40px -8px rgba(0, 0, 0, 0.4);
+}
+
+.dashboard-card .card-title {
+    color: var(--gray);
+    font-size: 0.875rem;
+    font-weight: 600;
+    text-transform: uppercase;
+    letter-spacing: 1.5px;
+    margin-bottom: 1.25rem;
+}
+
+.dashboard-card .card-value {
+    color: var(--white);
+    font-size: 2.75rem;
+    font-weight: 700;
+    letter-spacing: -1px;
+    margin-bottom: 1.25rem;
+    line-height: 1;
+}
+
+.dashboard-card .card-icon {
+    font-size: 3.5rem;
+    opacity: 0.15;
+    position: absolute;
+    right: 1.5rem;
+    bottom: 1.5rem;
+    transform: rotate(-15deg);
+}
+
+.dashboard-card.primary {
+    background: linear-gradient(135deg, rgba(59, 130, 246, 0.1), transparent);
+}
+
+.dashboard-card.success {
+    background: linear-gradient(135deg, rgba(16, 185, 129, 0.1), transparent);
+}
+
+/* Grafik kartı için ek stiller */
+.card canvas {
+    background: transparent !important;
+}
+
+.chart-container {
+    position: relative;
+    height: 300px;
+    width: 100%;
+}
+
+/* Grafik tooltip stilleri */
+.chartjs-tooltip {
+    background: rgba(15, 23, 42, 0.9) !important;
+    backdrop-filter: blur(20px);
+    border: 1px solid rgba(255, 255, 255, 0.1) !important;
+    border-radius: 8px;
+    color: var(--light) !important;
+    padding: 0.5rem 0.75rem !important;
+}
+
+/* Tablolar */
+.table {
+    color: var(--light);
+    margin: 0;
+}
+
+.table thead th {
+    background: rgba(255, 255, 255, 0.02);
+    color: var(--gray);
+    font-weight: 600;
+    text-transform: uppercase;
+    letter-spacing: 1.5px;
+    padding: 1.25rem;
+    border-bottom: 1px solid rgba(255, 255, 255, 0.05);
+    font-size: 0.75rem;
+}
+
+.table tbody td {
+    padding: 1.25rem;
+    border-bottom: 1px solid rgba(255, 255, 255, 0.05);
+    vertical-align: middle;
+}
+
+/* Butonlar */
+.btn {
+    padding: 0.75rem 1.75rem;
+    border-radius: var(--border-radius);
+    font-weight: 600;
+    letter-spacing: 0.5px;
+    transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+}
+
+.btn-primary {
+    background: var(--primary);
+    border: none;
+    box-shadow: 0 4px 12px rgba(59, 130, 246, 0.2);
+}
+
+.btn-primary:hover {
+    background: var(--primary-dark);
+    transform: translateY(-2px);
+    box-shadow: 0 8px 16px rgba(59, 130, 246, 0.3);
+}
+
+.btn-sm {
+    padding: 0.5rem 1rem;
+    font-size: 0.875rem;
+}
+
+/* Grafikler */
+canvas {
+    background: transparent !important;
+}
+
+/* DataTables Özelleştirme */
+.dataTables_wrapper {
+    color: var(--light);
+}
+
+.dataTables_length select,
+.dataTables_filter input {
+    background: rgba(255, 255, 255, 0.03);
+    border: 1px solid rgba(255, 255, 255, 0.05);
+    color: var(--light);
+    border-radius: var(--border-radius);
+    padding: 0.625rem 1rem;
+}
+
+.dataTables_paginate .paginate_button {
+    background: rgba(255, 255, 255, 0.03) !important;
+    border: 1px solid rgba(255, 255, 255, 0.05) !important;
+    color: var(--gray) !important;
+    border-radius: var(--border-radius);
+    margin: 0 0.25rem;
+    transition: all 0.3s ease;
+}
+
+.dataTables_paginate .paginate_button:hover {
+    background: rgba(255, 255, 255, 0.05) !important;
+    color: var(--white) !important;
+}
+
+.dataTables_paginate .paginate_button.current {
+    background: var(--primary) !important;
+    border-color: var(--primary) !important;
+    color: var(--white) !important;
+    font-weight: 600;
+}
+
+/* Scrollbar düzenlemesi */
+#layoutSidenav_content::-webkit-scrollbar,
+#layoutSidenav_nav::-webkit-scrollbar {
+    width: 8px;
+}
+
+#layoutSidenav_content::-webkit-scrollbar-track,
+#layoutSidenav_nav::-webkit-scrollbar-track {
+    background: transparent;
+}
+
+#layoutSidenav_content::-webkit-scrollbar-thumb,
+#layoutSidenav_nav::-webkit-scrollbar-thumb {
+    background: rgba(255, 255, 255, 0.1);
+    border-radius: 4px;
+}
+
+#layoutSidenav_content::-webkit-scrollbar-thumb:hover,
+#layoutSidenav_nav::-webkit-scrollbar-thumb:hover {
+    background: rgba(255, 255, 255, 0.2);
+}
+
+/* Responsive */
+@media (max-width: 991.98px) {
+    #layoutSidenav_nav {
+        transform: translateX(-100%);
+        transition: transform 0.3s ease;
+    }
+    
+    #layoutSidenav_content {
+        margin-left: 0;
+        transition: margin-left 0.3s ease;
+    }
+    
+    .sb-sidenav-toggled #layoutSidenav_nav {
+        transform: translateX(0);
+    }
+}
+
+/* Dashboard Kartları için ek stiller */
+.dashboard-card-icon {
+    width: 48px;
+    height: 48px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    border-radius: 16px;
+    font-size: 1.5rem;
+}
+
+.dashboard-card-icon.primary {
+    background: rgba(59, 130, 246, 0.1);
+    color: var(--primary);
+}
+
+.dashboard-card-icon.success {
+    background: rgba(16, 185, 129, 0.1);
+    color: var(--success);
+}
+
+.badge {
+    font-weight: 600;
+    font-size: 0.75rem;
+    padding: 0.5rem 1rem;
+    border-radius: 8px;
+}
+
+.bg-primary-subtle {
+    background: rgba(59, 130, 246, 0.1);
+}
+
+.bg-success-subtle {
+    background: rgba(16, 185, 129, 0.1);
+}
+
+.text-gray {
+    color: var(--gray);
+}
+
+.dropdown-menu {
+    background: var(--dark);
+    border: 1px solid rgba(255, 255, 255, 0.1);
+    margin-top: 0.5rem;
+    z-index: 1050;
+}
+
+.dropdown-item {
+    color: var(--light);
+}
+
+.dropdown-item:hover {
+    background: rgba(255, 255, 255, 0.1);
+    color: var(--white);
+}
+
+.btn-link {
+    color: var(--gray);
+}
+
+.btn-link:hover {
+    color: var(--white);
+}
+
+/* Gap utility */
+.gap-2 {
+    gap: 0.5rem;
+}
+
+.gap-4 {
+    gap: 1rem;
+}
+
+/* Haftalık Program Stili */
+.weekly-schedule {
+    background: rgba(15, 23, 42, 0.7);
+    backdrop-filter: blur(20px);
+    border-radius: var(--card-border-radius);
+    overflow: hidden;
+    width: 100%;
+}
+
+.schedule-header {
+    display: grid;
+    grid-template-columns: 70px repeat(7, 1fr);
+    background: rgba(255, 255, 255, 0.05);
+    border-bottom: 1px solid rgba(255, 255, 255, 0.1);
+}
+
+.schedule-body {
+    max-height: 500px;
+    overflow-y: auto;
+    scrollbar-width: thin;
+}
+
+.schedule-row {
+    display: grid;
+    grid-template-columns: 70px repeat(7, 1fr);
+    height: 30px; /* Sabit yükseklik */
+    border-bottom: 1px solid rgba(255, 255, 255, 0.05);
+    position: relative;
+}
+
+.time-column {
+    padding: 0.5rem 0.25rem !important;
+    text-align: center;
+    color: var(--gray);
+    font-size: 0.75rem !important;
+    background: rgba(255, 255, 255, 0.02);
+    white-space: nowrap;
+    overflow: hidden;
+}
+
+.schedule-slot {
+    padding: 0.25rem;
+    border-left: 1px solid rgba(255, 255, 255, 0.05);
+    position: relative;
+}
+
+.program-slot {
+    background: rgba(59, 130, 246, 0.1);
+    border: 1px solid rgba(59, 130, 246, 0.2);
+    border-radius: 8px;
+    padding: 0.5rem;
+    position: absolute;
+    left: 0.25rem;
+    right: 0.25rem;
+    top: 0;
+    z-index: 1;
+    transition: all 0.3s ease;
+    font-size: 0.75rem;
+}
+
+/* Slot içeriği için stil */
+.slot-content {
+    height: 100%;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+}
+
+.slot-info {
+    text-align: center;
+    color: var(--white);
+    line-height: 1.4;
+}
+
+.slot-actions {
+    display: flex;
+    gap: 0.25rem;
+    justify-content: center;
+    opacity: 0;
+    transition: opacity 0.2s ease;
+}
+
+.program-slot:hover {
+    background: rgba(59, 130, 246, 0.2);
+    transform: scale(1.02);
+    z-index: 2;
+}
+
+.program-slot:hover .slot-actions {
+    opacity: 1;
+}
+
+.day-column {
+    padding: 0.5rem 0.25rem !important;
+    text-align: center;
+}
+
+.day-name {
+    font-size: 0.85rem;
+    font-weight: 600;
+    color: var(--white);
+    margin-bottom: 0.25rem;
+    white-space: nowrap;
+    overflow: hidden;
+    text-overflow: ellipsis;
+}
+
+.date {
+    font-size: 0.7rem;
+    color: var(--gray);
+    white-space: nowrap;
+    overflow: hidden;
+    text-overflow: ellipsis;
+}
+
+.program-slot.reserved {
+    background: rgba(239, 68, 68, 0.1);
+    border-color: rgba(239, 68, 68, 0.2);
+}
+
+.program-slot.reserved .slot-time {
+    color: var(--danger);
+}
+
+/* Hafta navigasyonu */
+.btn-group .btn-sm {
+    padding: 0.25rem 0.75rem;
+    font-size: 0.8rem;
+}
+
+.btn-group span.btn {
+    min-width: 200px;
+}
+
+/* Modal Dark Theme */
+.modal-content.bg-dark {
+    background: var(--darker) !important;
+    backdrop-filter: blur(20px);
+    border: 1px solid rgba(255, 255, 255, 0.1);
+}
+
+.modal-header.border-secondary,
+.modal-footer.border-secondary {
+    border-color: rgba(255, 255, 255, 0.1) !important;
+}
+
+/* Form elementleri için dark theme */
+.form-control.bg-dark,
+.form-select.bg-dark {
+    background: rgba(15, 23, 42, 0.7) !important;
+    border-color: rgba(255, 255, 255, 0.1);
+    color: var(--light) !important;
+}
+
+/* Input type time için özel stil */
+input[type="time"].form-control.bg-dark::-webkit-calendar-picker-indicator {
+    filter: invert(1);
+    opacity: 0.5;
+}
+
+input[type="time"].form-control.bg-dark::-webkit-datetime-edit-fields-wrapper {
+    color: var(--light);
+}
+
+input[type="time"].form-control.bg-dark::-webkit-datetime-edit {
+    color: var(--light);
+}
+
+/* Select için özel stil */
+.form-select.bg-dark option {
+    background: var(--darker);
+    color: var(--light);
+}
+
+/* Input number için özel stil */
+input[type="number"].form-control.bg-dark::-webkit-inner-spin-button,
+input[type="number"].form-control.bg-dark::-webkit-outer-spin-button {
+    filter: invert(1);
+    opacity: 0.5;
+}
+
+/* Focus durumları */
+.form-control.bg-dark:focus,
+.form-select.bg-dark:focus {
+    background: rgba(15, 23, 42, 0.9) !important;
+    border-color: var(--primary);
+    box-shadow: 0 0 0 0.25rem rgba(59, 130, 246, 0.25);
+    color: var(--light) !important;
+}
+
+/* Placeholder rengi */
+.form-control.bg-dark::placeholder {
+    color: var(--gray);
+    opacity: 0.7;
+}
+
+/* Label rengi */
+.modal-content.bg-dark .form-label {
+    color: var(--gray);
+    font-weight: 500;
+}
+
+/* Close button rengi */
+.btn-close-white {
+    filter: invert(1) grayscale(100%) brightness(200%);
+    opacity: 0.7;
+}
+
+.btn-close-white:hover {
+    opacity: 1;
+}
+
+/* Görünüm değiştirme butonları */
+.btn-group .btn-outline-primary {
+    color: var(--gray);
+    border-color: rgba(255, 255, 255, 0.1);
+    background: transparent;
+}
+
+.btn-group .btn-outline-primary:hover {
+    color: var(--white);
+    background: rgba(59, 130, 246, 0.1);
+    border-color: rgba(59, 130, 246, 0.2);
+}
+
+.btn-group .btn-outline-primary.active {
+    color: var(--white);
+    background: var(--primary);
+    border-color: var(--primary);
+}
+
+/* Liste görünümü */
+#listView {
+    padding: 1.5rem;
+    background: rgba(15, 23, 42, 0.7);
+}
+
+#listView .table {
+    color: var(--light);
+    margin-bottom: 0;
+}
+
+#listView .table thead th {
+    border-bottom: 1px solid rgba(255, 255, 255, 0.1);
+    color: var(--gray);
+    font-weight: 600;
+    padding: 1rem;
+}
+
+#listView .table tbody td {
+    border-bottom: 1px solid rgba(255, 255, 255, 0.05);
+    padding: 1rem;
+    vertical-align: middle;
+}
+
+#listView .table tbody tr:hover {
+    background: rgba(255, 255, 255, 0.03);
+}
+
+/* DataTables özelleştirmeleri */
+.dataTables_wrapper {
+    padding: 1rem;
+}
+
+.dataTables_length label,
+.dataTables_filter label {
+    color: var(--gray);
+}
+
+.dataTables_length select,
+.dataTables_filter input {
+    background: rgba(255, 255, 255, 0.05) !important;
+    border: 1px solid rgba(255, 255, 255, 0.1) !important;
+    color: var(--light) !important;
+    border-radius: var(--border-radius);
+    padding: 0.5rem !important;
+}
+
+.dataTables_info {
+    color: var(--gray) !important;
+    padding-top: 1rem !important;
+}
+
+.dataTables_paginate .paginate_button {
+    color: var(--gray) !important;
+    border: 1px solid rgba(255, 255, 255, 0.1) !important;
+    background: rgba(255, 255, 255, 0.05) !important;
+    border-radius: var(--border-radius) !important;
+    margin: 0 0.25rem !important;
+}
+
+.dataTables_paginate .paginate_button:hover {
+    color: var(--white) !important;
+    background: rgba(59, 130, 246, 0.1) !important;
+    border-color: rgba(59, 130, 246, 0.2) !important;
+}
+
+.dataTables_paginate .paginate_button.current {
+    color: var(--white) !important;
+    background: var(--primary) !important;
+    border-color: var(--primary) !important;
+}
+
+/* Görünüm geçişleri için stil */
+.view-content {
+    display: none;
+}
+
+#weeklyView {
+    display: block; /* Varsayılan olarak haftalık görünüm gösterilsin */
+}
+
+/* Animasyon */
+.view-content.fade-in {
+    animation: fadeIn 0.3s ease;
+}
+
+@keyframes fadeIn {
+    from { opacity: 0; }
+    to { opacity: 1; }
+}
+
+/* Scrollbar düzenlemesi */
+.schedule-body::-webkit-scrollbar {
+    width: 6px;
+}
+
+.schedule-body::-webkit-scrollbar-track {
+    background: transparent;
+}
+
+.schedule-body::-webkit-scrollbar-thumb {
+    background: rgba(255, 255, 255, 0.1);
+    border-radius: 3px;
+}
+
+.slot-actions {
+    display: flex;
+    gap: 0.25rem;
+    margin-top: 0.5rem;
+}
+
+.slot-actions button {
+    padding: 0.25rem 0.5rem;
+    font-size: 0.75rem;
+}
+
+/* Randevu durumlarına göre stiller */
+.program-slot.reserved {
+    background: rgba(239, 68, 68, 0.1);
+    border-color: rgba(239, 68, 68, 0.2);
+}
+
+.program-slot.available {
+    background: rgba(16, 185, 129, 0.1);
+    border-color: rgba(16, 185, 129, 0.2);
+}
+
+.reserved-text {
+    color: var(--danger);
+    font-weight: 600;
+}
+
+.available-text {
+    color: var(--success);
+    font-weight: 600;
+}
+
+/* Slot içeriği için ek stiller */
+.slot-info {
+    text-align: center;
+    line-height: 1.4;
+    font-size: 0.75rem;
+}
+
+.slot-info small {
+    color: var(--gray);
+    font-size: 0.7rem;
+}
+
+/* Avatar stili */
+.avatar {
+    width: 64px;
+    height: 64px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+/* İstatistik kartları için ek stiller */
+.card .text-gray-300 {
+    color: rgba(255, 255, 255, 0.1);
+}
+
+.card .text-gray {
+    color: var(--gray);
+}
+
+.card .h3 {
+    font-weight: 600;
+}
+
+/* Progress bar stilleri */
+.progress {
+    background: rgba(255, 255, 255, 0.1);
+    border-radius: 8px;
+    overflow: hidden;
+}
+
+.progress-bar {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 0.75rem;
+    font-weight: 600;
+    color: var(--white);
+    transition: width 0.6s ease;
+}
+
+.progress-bar.bg-primary {
+    background: var(--primary) !important;
+}
+
+.progress-bar.bg-success {
+    background: var(--success) !important;
+}
+
+/* Tablo düzenlemeleri */
+.table thead th {
+    border-bottom: 1px solid rgba(255, 255, 255, 0.1);
+    font-weight: 600;
+    text-transform: uppercase;
+    font-size: 0.75rem;
+    letter-spacing: 0.5px;
+}
+
+.table td {
+    vertical-align: middle;
+    padding: 1rem;
+}
+
+/* Footer için özel düzenleme */
+.footer-fix .container-fluid {
+    height: 100%;
+    padding: 0 2rem;
+}
+
+.footer-fix .text-muted {
+    color: rgba(255, 255, 255, 0.6) !important;
+}
+
+.footer-fix a.text-muted:hover {
+    color: rgba(255, 255, 255, 0.8) !important;
+    text-decoration: none;
+}
+
+/* Responsive düzeltme */
+@media (max-width: 768px) {
+    .sb-topnav,
+    #layoutSidenav_content,
+    .footer-fix {
+        width: 100%;
+        margin-left: 0;
+    }
+    
+    .sb-topnav {
+        padding: 0 1rem;
+    }
+    
+    .navbar-brand {
+        font-size: 1.1rem;
+    }
+}
+
+/* Sidebar Toggle Butonu */
+#sidebarToggle {
+    color: var(--gray);
+    padding: 0.25rem 0.5rem;
+    border-radius: var(--border-radius);
+    transition: all 0.3s ease;
+    display: none; /* Varsayılan olarak gizli */
+}
+
+#sidebarToggle:hover {
+    color: var(--white);
+    background: rgba(255, 255, 255, 0.05);
+}
+
+/* Responsive düzenlemeler */
+@media (max-width: 991.98px) {
+    #sidebarToggle {
+        display: inline-block; /* Mobilde göster */
+    }
+    
+    #layoutSidenav_nav {
+        transform: translateX(-100%);
+        transition: transform 0.3s ease;
+    }
+    
+    .sb-nav-fixed.sb-sidenav-toggled #layoutSidenav_nav {
+        transform: translateX(0);
+    }
+    
+    .sb-topnav,
+    #layoutSidenav_content,
+    .footer-fix {
+        width: 100%;
+        margin-left: 0;
+    }
+    
+    .navbar-brand {
+        display: flex;
+        align-items: center;
+        font-size: 1.1rem;
+    }
+} 
