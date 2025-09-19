@@ -22,7 +22,7 @@
     <link href="assets/css/style.css" rel="stylesheet">
     <script src="https://kit.fontawesome.com/your-code.js"></script>
     <script src="https://challenges.cloudflare.com/turnstile/v0/api.js" async defer></script>
-    <script defer src="https://stats.furkanyildirim.com/script.js" data-website-id="732f974a-a493-43b2-acb2-b185c7213636"></script>
+    <script async defer src="https://stats.furkanyildirim.com/tracker.js" data-website-id="cmfqlh3sh0075hap1spnnp30l"></script>
 </head>
 <body class="sb-nav-fixed">
     <!-- Normal Menü (Masaüstü) -->

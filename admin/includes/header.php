@@ -12,6 +12,6 @@
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
     <link rel="stylesheet" href="https://cdn.datatables.net/1.10.24/css/dataTables.bootstrap5.min.css">
     <link rel="stylesheet" href="../assets/css/admin.css">
-    <script defer src="https://stats.furkanyildirim.com/script.js" data-website-id="fc573ff6-4721-4539-909a-cd54d610690a"></script>
+    <script async defer src="https://stats.furkanyildirim.com/tracker.js" data-website-id="cmfqlhm040077hap11y665kv7"></script>
 </head>
 <body class="sb-nav-fixed"> 
