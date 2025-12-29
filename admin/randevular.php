@@ -40,14 +40,35 @@ $sayfa = 'randevular';
 $sayfa_basligi = 'Randevular';
 
 // Hafta seçimi
-$current_week = isset($_GET['week']) ? (int)$_GET['week'] : date('W');
-$current_year = isset($_GET['year']) ? (int)$_GET['year'] : date('Y');
+// ISO hafta yılı için date('o') kullanılmalı, date('Y') değil
+// Çünkü yıl sonu/başı geçişlerinde ISO hafta numarası farklı yıla ait olabilir
+// Örn: 29 Aralık 2025 ISO haftası 2026'nın 1. haftasıdır
+$current_week = isset($_GET['week']) ? (int)$_GET['week'] : (int)date('W');
+$current_year = isset($_GET['year']) ? (int)$_GET['year'] : (int)date('o');
 
 // Haftanın başlangıç ve bitiş tarihlerini hesapla
 $week_start = new DateTime();
 $week_start->setISODate($current_year, $current_week);
 $week_end = clone $week_start;
 $week_end->modify('+6 days');
+
+// Önceki ve sonraki hafta için yıl geçiş hesaplaması
+$prev_week = $current_week - 1;
+$prev_year = $current_year;
+if ($prev_week < 1) {
+    $prev_year--;
+    // Önceki yılın son haftasını bul
+    $prev_week = (int)date('W', strtotime("$prev_year-12-28"));
+}
+
+$next_week = $current_week + 1;
+$next_year = $current_year;
+// Mevcut yılın son haftasını kontrol et
+$max_week = (int)date('W', strtotime("$current_year-12-28"));
+if ($next_week > $max_week) {
+    $next_year++;
+    $next_week = 1;
+}
 
 // Randevuları getir
 $sql = "SELECT rs.*, ps.gun, ps.kontenjan as sablon_kontenjan,
@@ -251,7 +272,7 @@ include 'includes/topbar.php';
                             Haftalık Program
                         </div>
                         <div class="btn-group">
-                            <a href="?week=<?php echo ($current_week-1); ?>&year=<?php echo $current_year; ?>" 
+                            <a href="?week=<?php echo $prev_week; ?>&year=<?php echo $prev_year; ?>" 
                                class="btn btn-sm btn-outline-primary">
                                 <i class="fas fa-chevron-left"></i>
                             </a>
@@ -262,7 +283,7 @@ include 'includes/topbar.php';
                                      date('d ', $week_end->getTimestamp()) . turkceAy(date('F', $week_end->getTimestamp())) . ')'; 
                                 ?>
                             </span>
-                            <a href="?week=<?php echo ($current_week+1); ?>&year=<?php echo $current_year; ?>" 
+                            <a href="?week=<?php echo $next_week; ?>&year=<?php echo $next_year; ?>" 
                                class="btn btn-sm btn-outline-primary">
                                 <i class="fas fa-chevron-right"></i>
                             </a>
